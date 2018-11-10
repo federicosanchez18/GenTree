@@ -33,7 +33,7 @@ void setAt(ArrayList& xs, int i, ELEM_TYPE x); // O(1)
 // Agrega "x" al final de "xs"
 void add(ArrayList& xs,  ELEM_TYPE x); // O(1) amortizado
 
-// Borra el último elemento de "xs" y lo devuelve
+// Borra el ï¿½ltimo elemento de "xs" y lo devuelve
 // Prec.: length(xs) > 0
 ELEM_TYPE remove(ArrayList& xs); // O(1)
 
@@ -59,14 +59,14 @@ ArrayList copiar(ArrayList xs);
 
 /** INTERFAZ EXTENDIDA 2 **/
 
-// Agregar un elemento en la posición indicada,
+// Agregar un elemento en la posiciï¿½n indicada,
 // corriendo el resto de los elementos siguientes
-// en una posición
+// en una posiciï¿½n
 void addAt(ArrayList& xs, int i, ELEM_TYPE x); // O(n)
 
-// Borra un elemento en la posición indicada,
+// Borra un elemento en la posiciï¿½n indicada,
 // corriendo el resto de los elementos siguientes
-// a una posición anterior
+// a una posiciï¿½n anterior
 void removeAt(ArrayList& xs, int i); // O(n)
 
 // Devuelve una copia de la sublista desde fromIndex hasta toIndex

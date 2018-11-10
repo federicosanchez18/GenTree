@@ -12,7 +12,13 @@ int sizeT(GenTree t) {
 
 // PROPOSITO: INDICA SI EL ELEMENTO APARECE EN EL ARBOL
 bool containsT(string x, GenTree t) {
-    /// COMPLETAR
+    bool r= false
+    ArrayList ts = children(t);
+    for(int i = 0; i < length(ts); i++) {
+            r = r || containsT(x, getAt(ts,i));
+
+    }
+    return r;
 }
 
 // PROPOSITO: INDICA LA CANTIDAD DE VECES QUE APARECE EL ELEMENTO
