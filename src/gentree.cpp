@@ -9,7 +9,7 @@ struct GNode
 
 
 GenTree leaf(T_ELEM_TYPE x){
-    GNode* leaf = new Gnode;
+    GNode* leaf = new GNode;
     leaf->elem = x;
     leaf->children = crearArrayList();
     return leaf;
@@ -34,8 +34,8 @@ void addChild(GenTree& t, GenTree child){
 void destroyTree(GenTree& t){
     ArrayList lista = t->children;
     for(int i = 0; i < length(lista); i++ ){
-        GNode node = getAt(lista,i)
-        destroyerTree(node); // recursion
+        GNode* node = getAt(lista,i);
+        destroyTree(node); // recursion
     }
     destroyArrayList(lista); //elimina la lista del t 
     delete t; // elimina el nodo
