@@ -8,7 +8,14 @@
 using namespace std;
 
 void generate(string vocab[], int vocabSize, int maxLevel, int level, GenTree& t) {
-  /// COMPLETAR
+      if(maxLevel > level){
+        for (int i = 0; i < vocabSize ; i++){
+            GenTree h = leaf(value(t) + vocab[i]);
+            addChild(t,h);
+            generate(vocab,vocabSize,maxLevel, level + 1, h);
+        }
+
+      }
 }
 
 GenTree generate(string vocab[], int vocabSize, int maxLevel) {
@@ -18,7 +25,14 @@ GenTree generate(string vocab[], int vocabSize, int maxLevel) {
 }
 
 void allPasswords(GenTree t, List& xs) {
-  /// COMPLETAR
+    ArrayList ts = children(t);
+    for(int i = 0; i < length(ts) ; i++){
+        allPasswords(getAt(ts,i),xs);
+    }
+    if(isLeaf(t)){
+      snoc(xs,value(t));
+    }
+
 }
 
 List allPasswords(GenTree t) {

@@ -156,29 +156,29 @@ GenTree maxHeight(ArrayList ts) {
     return h;
 }
 
-// PROPOSITO: DEVUELVE LA CONCATENACION DE LOS ELEMENTOS DE LOS ARBOLES DE LA LISTA
-// List concatToList(ArrayList ts) { // consulta si tengo q recorrer todo el arbol o concatener el concatALL 
-//     List xs = nil();
-//     for (int = 0 ; i < length(ts); i++){
-//         concatToList(children(getAt(ts,i)));
-//         snoc(xs,value)
-//     } 
-//     return xs; 
-// }
+//PROPOSITO: DEVUELVE LA CONCATENACION DE LOS ELEMENTOS DE LOS ARBOLES DE LA LISTA
+List concatToList(ArrayList ts) { // consulta si tengo q recorrer todo el arbol o concatener el concatALL 
+    List xs = nil();
+    for (int = 0 ; i < length(ts); i++){
+        concatToList(children(getAt(ts,i)));
+        snoc(xs,value)
+    } 
+    return xs; 
+}
 
-// PROPOSITO: INDICA SI TODOS LOS ELEMENTOS DE LA LISTA ESTAN EN EL ARBOL
-// bool containsAll(List elems, GenTree t) {
-//     bool x = true;
-//     ListIterator i = initIt(elems)
+//PROPOSITO: INDICA SI TODOS LOS ELEMENTOS DE LA LISTA ESTAN EN EL ARBOL
+bool containsAll(List elems, GenTree t) {
+    bool x = true;
+    ListIterator i = initIt(elems)
     
-//     while(not finished(elems)){
+    while(not finished(elems)){
 
-//         x = x && containsT(getCurrent(i,t));
-//         next(i);
-//     }
-//     return x;
+        x = x && containsT(getCurrent(i,t));
+        next(i);
+    }
+    return x;
 
-// }
+}
 
 // PROPOSITO: CONCATENA TODOS LOS STRINGS DEL ARBOL
 string concatAll(GenTree t) {
