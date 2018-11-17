@@ -136,18 +136,29 @@ string stringWithMaxSize(GenTree t) {
     return x;
 }
     
+//PROPOSITO: Agrega a la lista que recibe por parametro, los elementos que devuelve la 
+// busqueda por indice del path recibido.
+List elemsInPaths(GenTree t, int path[], int pathSize,int i, List& xs){
+   snoc(xs,value(t));
+   ArrayList ts = children(t);
+   if (i == pathSize){
+       return xs;
+   }
+   elemsInPaths(getAt(ts,path[i]),path,pathSize, i+1, xs);
+}
 
 // PROPOSITO: DADO UN ARRAY CON NUMEROS QUE INDICAN UN CAMINO POR EL ARBOL
 // DEVUELVE LOS ELEMENTOS QUE SE ENCUENTRAN EN DICHO CAMINO
 List elemsInPath(GenTree t, int path[], int pathSize) {
-
+    List ls = nil();
+    return elemsInPaths(t,path,pathSize,0,ls);
 }
 
 // PROPOSITO: DEVUELVE EL ARBOL CON MAYOR ALTURA
 // PRECONDICION: LA LISTA NO ESTA VACIA
 GenTree maxHeight(ArrayList ts) {
     GenTree h = getAt(ts,0);
-    for ( int i = 0 ; i < length(ts) ; i++){
+    for ( int i = 1 ; i < length(ts) ; i++){
         if(heightT(h) < heightT (getAt(ts,i))){
             h = getAt(ts,i);
         }
@@ -156,28 +167,28 @@ GenTree maxHeight(ArrayList ts) {
     return h;
 }
 
+List isList(List& xs, ArrayList ys){
+        for(int i = 0 ; i < length(ys) ; i++){
+                elementosTree(xs,getAt(ys,i));
+        }
+        return xs;
+}
+
 //PROPOSITO: DEVUELVE LA CONCATENACION DE LOS ELEMENTOS DE LOS ARBOLES DE LA LISTA
 List concatToList(ArrayList ts) { // consulta si tengo q recorrer todo el arbol o concatener el concatALL 
-    List xs = nil();
-    for (int = 0 ; i < length(ts); i++){
-        concatToList(children(getAt(ts,i)));
-        snoc(xs,value)
-    } 
-    return xs; 
+   List xs = nil();
+   return isList(xs,ts); 
 }
 
 //PROPOSITO: INDICA SI TODOS LOS ELEMENTOS DE LA LISTA ESTAN EN EL ARBOL
 bool containsAll(List elems, GenTree t) {
-    bool x = true;
-    ListIterator i = initIt(elems)
-    
-    while(not finished(elems)){
-
-        x = x && containsT(getCurrent(i,t));
-        next(i);
+     ListIterator it = initIt(elems);
+    bool r = true;
+    while (not finished(it)){
+        r = r && containsT(getCurrent(it),t);
+        next(it);
     }
-    return x;
-
+    return r;
 }
 
 // PROPOSITO: CONCATENA TODOS LOS STRINGS DEL ARBOL
@@ -246,20 +257,6 @@ void testTree() {
 
     //test de levelN
     printList(levelN(2,t));
-    // cout <<  "levelN : " << length(levelN(2 ,t)) << endl;
+     cout <<  "levelN : " << length(levelN(2 ,t)) << endl;
 
-    //test de stringWithMaxSize:
-
-    //test de elemsInPath:
-
-    //test de maxHeight;
-
-    //test de concatToList;
-
-    //test de containsAll;
-    
-    //test de concatAll
-    // cout << "concatALL : " << concatAll(y) << endl;
-
-    //te
 }
